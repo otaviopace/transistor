@@ -8,7 +8,19 @@ repository = "https://github.com/naomijub/transistor"
 keywords = ["DATOMIC", "Client", "database"]
 license = "GPL-3.0-or-later"
 edition = "2018"
+build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+j4rs = "0.11.2"
+jni = { version = "0.10", git = "https://github.com/alexander-irbis/jni-rs", branch = "clone-jnienv", features = ["invocation"] }
+# jni = "0.17.0"
+
+[build-dependencies]
+walkdir = "*"
+
+[features]
+libjvm = []
+resource-manager = []
+invocation = ["jni/invocation"]
